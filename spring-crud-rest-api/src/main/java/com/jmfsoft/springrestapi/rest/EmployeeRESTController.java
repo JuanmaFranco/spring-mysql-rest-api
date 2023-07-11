@@ -35,10 +35,26 @@ public class EmployeeRESTController {
     }
 
     @PostMapping("/employees")
-    public Employee save(@RequestBody Employee employee) {
+    public Employee saveEmployee(@RequestBody Employee employee) {
         employee.setId(0); // Asegura que es una inserción y no una actualización
         return employeeService.save(employee);
     }
 
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        return employeeService.save(employee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteById(@PathVariable int id) {
+        Employee employee = employeeService.findById(id);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee with id " + id + " not found!!");
+        }
+
+        employeeService.deleteById(id);
+        return "Employee with id --> " + id + " deleted succesfully!";
+    }
 
 }
