@@ -1,7 +1,7 @@
 package com.jmfsoft.springrestapi.rest;
 
-import com.jmfsoft.springrestapi.dao.EmployeeDAO;
 import com.jmfsoft.springrestapi.entity.Employee;
+import com.jmfsoft.springrestapi.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,18 +14,18 @@ import java.util.List;
 public class EmployeeRESTController {
 
     // Se inyecta employeeDAO para realizar pruebas rápidas, luego se refactorizará con la capa de servicio
-    private EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRESTController(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeRESTController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     // ===> Endpoints <===
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return employeeService.findAll();
     }
 
 }
