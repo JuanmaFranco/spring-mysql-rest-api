@@ -50,6 +50,47 @@ The API will be accessible at `http://localhost:8080`.
 - Method: `GET`
 - URL: `/employees`
 
+## Exception Handling
+
+The application handles exceptions in a centralized manner using the `EmployeeExceptionHandler` class. It provides appropriate responses for different types of exceptions that may occur during API operations. The exception handling logic is as follows:
+
+```java
+@ControllerAdvice
+public class EmployeeExceptionHandler {
+
+    @ExceptionHandler
+    public ResponseEntity<EmployeeErrorResponse> handleException(EmployeeNotFoundException employeeNotFoundException) {
+        EmployeeErrorResponse response = new EmployeeErrorResponse();
+        response.setStatusCode(HttpStatus.NOT_FOUND.value());
+        response.setMessage(employeeNotFoundException.getMessage());
+        response.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<EmployeeErrorResponse> handleException(Exception exception) {
+        EmployeeErrorResponse response = new EmployeeErrorResponse();
+        response.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        response.setMessage(exception.getMessage());
+        response.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+}
+```
+
+The EmployeeExceptionHandler class uses the @ExceptionHandler annotation to define specific exception handling methods. If an EmployeeNotFoundException is thrown, the application returns a response with a "Not Found" status code (404) and the corresponding error message. For any other exceptions, a "Bad Request" status code (400) is returned along with the error message.
+
+### Error Responses
+
+When an exception is encountered, the API returns error responses in a JSON format. The error response includes the following details:
+
+- Status Code: The HTTP status code indicating the nature of the error.
+- Error Message: A descriptive message explaining the nature of the error.
+- Timestamp: The timestamp indicating the date and time when the error occurred.
+
 ## Postman Collection
 
 To simplify the testing and usage of this API, a Postman collection with pre-configured requests is provided.
