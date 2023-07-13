@@ -21,6 +21,19 @@ This repository contains a REST API for managing employees. It provides endpoint
 
 The API will be accessible at `http://localhost:8080`.
 
+## Schema and Data Setup
+
+To prepare the database for testing the API, follow these steps:
+
+1. Open MySQL Workbench or your preferred MySQL client.
+2. Execute the schema-and-data.sql script located in the sql folder of the project. This script will create the necessary schema and populate the employee table with example data. Make sure you have appropriate permissions to create the schema and insert data.
+
+    schema-and-data.sql:
+
+    ![Schema and Data Script](images/schema-and-data-script.png)
+
+3. Verify that the schema and data have been successfully created by running queries on the spring_crud_restapi schema.
+
 ## Endpoints
 
 ### Create Employee
