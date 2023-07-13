@@ -39,29 +39,29 @@ To prepare the database for testing the API, follow these steps:
 ### Create Employee
 
 - Method: `POST`
-- URL: `/employees`
+- URL: `/api/employees`
 - Request body: JSON object representing the employee details
 
 ### Update Employee
 
 - Method: `PUT`
-- URL: `/employees/{id}`
+- URL: `/api/employees/{id}`
 - Request body: JSON object representing the updated employee details
 
 ### Delete Employee
 
 - Method: `DELETE`
-- URL: `/employees/{id}`
+- URL: `/api/employees/{id}`
 
 ### Get Employee by ID
 
 - Method: `GET`
-- URL: `/employees/{id}`
+- URL: `/api/employees/{id}`
 
 ### Get All Employees
 
 - Method: `GET`
-- URL: `/employees`
+- URL: `/api/employees`
 
 ## Exception Handling
 
