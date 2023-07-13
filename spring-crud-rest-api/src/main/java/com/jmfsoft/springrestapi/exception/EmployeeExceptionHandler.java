@@ -24,11 +24,11 @@ public class EmployeeExceptionHandler {
     public ResponseEntity<EmployeeErrorResponse> handleException(Exception exception) {
         EmployeeErrorResponse response = new EmployeeErrorResponse();
 
-        response.setStatusCode(HttpStatus.NOT_FOUND.value());
+        response.setStatusCode(HttpStatus.BAD_REQUEST.value());
         response.setMessage(exception.getMessage());
         response.setTimeStamp(System.currentTimeMillis());
 
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 
