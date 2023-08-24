@@ -6,10 +6,11 @@ USE spring_crud_restapi;
 
 -- Create table
 CREATE TABLE IF NOT EXISTS employee (
-  id INT NOT NULL PRIMARY KEY,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  email VARCHAR(255)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 -- Insert sample data
